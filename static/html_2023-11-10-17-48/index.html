@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="search-form">
+      <h1>Search Users</h1>
+      <form id="searchForm">
+        <input type="text" id="nameInput" placeholder="Enter name">
+        <input type="text" id="locationInput" placeholder="Enter location">
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section id="searchResults" class="search-results">
+      <h2>Search Results</h2>
+      <ul id="usersList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2021 User Search. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

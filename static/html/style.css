@@ -1,0 +1,44 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 50px;
+}
+
+#jokeContainer {
+    margin: 50px auto;
+    width: 400px;
+    height: 200px;
+    background-color: skyblue; // Changed background color to sky blue
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#jokeText {
+    font-size: 18px;
+}
+
+#getJokeButton {
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, #4e9cff, #0066ff); // Added color gradient to button
+}
+
+.click-animation {
+    animation: clickAnimation 0.3s;
+}
+
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

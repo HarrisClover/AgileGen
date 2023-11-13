@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(0);
+    transition: filter 0.5s ease;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.password-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.blur-weak {
+    filter: blur(2px);
+}
+
+.blur-medium {
+    filter: blur(5px);
+}
+
+.blur-strong {
+    filter: blur(10px);
+}
