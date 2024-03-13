@@ -18,11 +18,8 @@ The interaction and collaboration design of AgileGen is divided into two parts.
 ---
 
 # ❓**What Can AgileGen (Sapper4SE) Do?**
----
-
 
 https://github.com/HarrisClover/AgileGen/assets/33628813/8478c0d1-b511-4cae-8037-0c3f11f7074e
-
 
 ---
 
