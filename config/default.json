@@ -1,7 +1,7 @@
 {
     "logs_dir": "logs/logs.log",
-    "model": "gpt-3.5-turbo",
-    "temperature": 0.3,
+    "model": "gpt-4o",
+    "temperature": 0.4,
     "static_dir":"./static",
     "static_html_dir": "./static/html",
     "prompt_path": "./prompts_templates",

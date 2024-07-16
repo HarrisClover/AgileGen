@@ -1,10 +1,6 @@
-import random
 import sys
-import webbrowser
 import time
 import os
-import zipfile
-import sqlite3
 import gradio as gr
 from utils.log import Logger
 from pathlib import Path
@@ -14,7 +10,7 @@ from database.DB_Tools import DB_Tools
 from dotenv import load_dotenv
 from AiderModify.ModifyCodeAider import modify_code_aider
 
-# ----------log----------------
+# ----------log-------------
 sys.stdout = Logger("logs/logs.log")
 load_dotenv()
 
@@ -36,7 +32,8 @@ if __name__ == "__main__":
 
     def fn_scenario_generation(input_feature):
         feature2scenarios_list = db_tools.select_all()
-        similar_Feature2Scenarios = codegeneration.TopN_Feature2Scenarios(feature2scenarios_list, input_feature)
+        similar_Feature2Scenarios = codegeneration.TopN_Feature2Scenarios(
+            feature2scenarios_list, input_feature)
         print("\n------------------Gherkin generating-------------------\n")
         Gherkin_response, messages = codegeneration.Gherkin_generation(input_feature, similar_Feature2Scenarios)
         print(Gherkin_response)
@@ -44,6 +41,7 @@ if __name__ == "__main__":
         print("\n---------------------Gherkin2NL-----------------------\n")
         Gherkin_NL_List = codegeneration.Gherkin2NL(Scenarios_List, messages)
         print(Gherkin_NL_List)
+
         output_dict = {}
         for i in range(len(Gherkin_NL_List)):
             output_dict[globals()["scenarios_list"][i]
@@ -72,12 +70,14 @@ if __name__ == "__main__":
     def fn_code_generation(*args):
         print("\n------------------fn_code_generation-----------------------\n")
         codegeneration.clear_static_html_dir()
+
         Gherkin_NL_List = []
         for i in range(len(args)-1):
             if args[i] != "":
                 Gherkin_NL_List.append(args[i])
 
         input_feature = args[-1]
+
         db_tools.insert(input_feature, Gherkin_NL_List)
         print("\n------------------NL2Gherkin-----------------------\n")
         Gherkin_result = codegeneration.NL2Gherkin(Gherkin_NL_List, input_feature)
@@ -90,14 +90,19 @@ if __name__ == "__main__":
         Visual_design_template = codegeneration.Visual_design_template_generation(Design_page_template)
         print(Visual_design_template)
         print("\n----------------Code_generation-----------------\n")
-        Generated_code = codegeneration.Code_generation(Visual_design_template, Design_page_template, input_feature, Gherkin_result)
+        Generated_code, loop_number = codegeneration.Code_generation(
+            Visual_design_template, Design_page_template, input_feature, Gherkin_result)
+
         file_path = "static/html/index.html"+'?time='+str(time.time())
         file_name = "index.html"
         link = f'<a href="file={file_path}" target="_blank">{file_name}</a>'
+
         iframe = iframe_generator(file_path)
+
         output_path = os.path.join(static_dir, "html.zip")
         zip_folder(folder_path=codegeneration.args.static_html_dir,
                    output_path=output_path)
+
         return link, gr.update(visible=True), output_path, Generated_code, iframe
 
     def fn_download_file():
@@ -126,7 +131,8 @@ if __name__ == "__main__":
         time.sleep(15)
         print("\n---------------Code_Modification-------------\n")
         testdir = "static/html"
-        model_name = "gpt-4"
+        model_name = "gpt-4-turbo-2024-04-09"
+        # model_name = "gpt-4o"
         edit_format = "whole"
         tries = 2
         no_unit_tests = True
@@ -136,14 +142,17 @@ if __name__ == "__main__":
         edit_purpose = "code"
         modify_code_aider(code_modification_suggestion_string, edit_purpose, testdir,
                           model_name, edit_format, tries, no_unit_tests, no_aider, verbose, commit_hash)
+
         output_path = os.path.join(static_dir, "html.zip")
         zip_folder(folder_path=codegeneration.args.static_html_dir,
                    output_path=output_path)
+
         file_path = "static/html/index.html"+'?time='+str(time.time())
         file_name = "index.html"
         link = f'<a href="file={file_path}" target="_blank">{file_name}</a>'
         iframe = iframe_generator(file_path)
         modified_code = ""
+
         return link, output_path, modified_code, iframe
 
     def fn_design_modification(code_modification_suggestion_string, generated_code):
@@ -154,6 +163,7 @@ if __name__ == "__main__":
         output_path = os.path.join(static_dir, "html.zip")
         zip_folder(folder_path=codegeneration.args.static_html_dir,
                    output_path=output_path)
+
         file_path = "static/html/index.html"+'?time='+str(time.time())
         file_name = "index.html"
         link = f'<a href="file={file_path}" target="_blank">{file_name}</a>'
@@ -165,7 +175,7 @@ if __name__ == "__main__":
         print("\n----------------Design_Modification----------------\n")
 
         testdir = "static/html"
-        model_name = "gpt-3.5-turbo-0613"
+        model_name = "gpt-4-turbo-2024-04-09"
         edit_format = "whole"
         tries = 2
         no_unit_tests = True
@@ -185,11 +195,12 @@ if __name__ == "__main__":
         link = f'<a href="file={file_path}" target="_blank">{file_name}</a>'
         iframe = iframe_generator(file_path)
         modified_code = ""
+
         return link, output_path, modified_code, iframe
     
 
-    with gr.Blocks(title="Sapper4SE") as app:
-        gr.Markdown("# Sapper4SE")
+    with gr.Blocks(title="AgileGen") as app:
+        gr.Markdown("# AgileGen")
         generated_code_state = gr.State(value="")
 
         with gr.Row() as Feature_Block:

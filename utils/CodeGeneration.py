@@ -4,11 +4,9 @@ import openai
 import json
 import re
 import time
-import dill
 import cv2
 import shutil
 import time
-import sqlite3
 
 from pathlib import Path
 from difflib import SequenceMatcher
@@ -22,33 +20,27 @@ class CodeGeneration():
 
     def __init__(self):
         with open('config/default.json', 'r') as file:
-            # Load the data from the file
             config_dict = json.load(file)
         Config = namedtuple('Config', config_dict.keys())
         args = Config(**config_dict)
         self.args = args
-        openai.api_key = os.environ.get("openai_api_key")
+        openai.api_key = os.environ.get("OPENAI_API_KEY")
         self.get_prompt()
         self.set_proxy()
 
     @staticmethod
     def set_proxy():
-        os.environ["https_proxy"] = "http://127.0.0.1:12345"
-        # pass
+        # os.environ["https_proxy"] = "http://172.24.48.1:10809"
+        pass
 
     def TopN_Feature2Scenarios(self, feature2scenarios_list, input_feature):
 
         similar_Feature2Scenarios = []
-        # Define a function to calculate similarity score for a given feature
-
         for feature2scenarios in feature2scenarios_list:
-            # Calculate the similarity between the input feature and the feature in the database
             similarity_score = SequenceMatcher(None, input_feature, feature2scenarios["feature"]).ratio()
-            # If the similarity score is greater than or equal to 0.7, add the feature to the list
             if similarity_score >= self.args.similarity_threshold:
                 similar_Feature2Scenarios.append({'feature': feature2scenarios["feature"], 'scenarios': feature2scenarios["scenarios"], 'similarity_score': similarity_score})
 
-        # # Return the top similar features
         similar_Feature2Scenarios = sorted(similar_Feature2Scenarios, key=lambda x: x['similarity_score'], reverse=True)[:self.args.max_feature_number]
         return similar_Feature2Scenarios
 
@@ -61,26 +53,20 @@ class CodeGeneration():
             self.Visual_design_prompt = f.read()
         with open(osp.join(self.args.prompt_path, "Code_generation_prompt.txt"), "r", encoding="utf-8") as f:
             self.Code_generation_prompt = f.read()
-
         with open(osp.join(self.args.prompt_path, "Gherkin2NL_prompt.txt"), "r", encoding="utf-8") as f:
             self.Gherkin2NL_prompt = f.read()
         with open(osp.join(self.args.prompt_path, "NL2Gherkin_prompt.txt"), "r", encoding="utf-8") as f:
             self.NL2Gherkin_prompt = f.read()
         with open(osp.join(self.args.prompt_path, "Gherkin_merge_prompt.txt"), "r", encoding="utf-8") as f:
             self.Gherkin_merge_prompt = f.read()
-
         with open(osp.join(self.args.prompt_path, "Code_modification_prompt.txt"), "r", encoding="utf-8") as f:
             self.Code_modification_prompt = f.read()
-
         with open(osp.join(self.args.prompt_path, "Test_cases_generation_prompt.txt"), "r", encoding="utf-8") as f:
             self.Test_cases_generation_prompt = f.read()
-
         with open(osp.join(self.args.prompt_path, "Code_modification_based_on_test_cases_prompt.txt"), "r", encoding="utf-8") as f:
             self.Code_modification_based_on_test_cases_prompt = f.read()
-
         with open(osp.join(self.args.prompt_path, "Human_in_the_loop_prompt.txt"), "r", encoding="utf-8") as f:
             self.Human_in_the_loop_prompt = f.read()
-
         with open(osp.join(self.args.prompt_path, "Design_modification_prompt.txt"), "r", encoding="utf-8") as f:
             self.Design_modification_prompt = f.read()
 
@@ -125,10 +111,12 @@ class CodeGeneration():
             current_statement += line + '\n'
         if current_statement:
             statements.append(current_statement.strip())
+
         Scenarios = []
         for i in range(len(statements)):
             if statements[i].startswith("Scenario"):
                 Scenarios.append(statements[i])
+
         return Scenarios
 
     def Scenario_NL_Parsing(self, Scenario_NL):
@@ -180,7 +168,6 @@ class CodeGeneration():
         Gherkin_NL = ''
         Gherkin_NL = self.handel_extra_response(extra_response_count, messages, Gherkin_NL)
         Gherkin_NL = Gherkin_NL+response["choices"][0]["message"]["content"]
-        Gherkin_NL = "Scenario 1: " + Gherkin_NL
         Scenarios_NL_List = self.Scenario_NL_Parsing(Gherkin_NL)
         return Scenarios_NL_List
 
@@ -188,7 +175,6 @@ class CodeGeneration():
         Gherkin_NL_str = ''
         for Gherkin_NL in Gherkin_NL_List:
             Gherkin_NL_str += Gherkin_NL+"\n"
-
         messages = []
         current_NL2Gherkin_prompt = self.NL2Gherkin_prompt.replace("{NL Replacement Flag}", Gherkin_NL_str)
         current_NL2Gherkin_prompt = current_NL2Gherkin_prompt.replace("{Feature Replacement Flag}", Feature)
@@ -202,7 +188,7 @@ class CodeGeneration():
         return Gherkin
 
     def Gherkin_merge(self, Gherkin_list):
-        Gherkin_merge_str = ''  # 添加feature作为prompt
+        Gherkin_merge_str = ''
         for Gherkin in Gherkin_list:
             Gherkin_merge_str += Gherkin+"\n"
         Gherkin_merge_prompt = self.Gherkin_merge_prompt.replace("{Replacement Flag}", Gherkin_merge_str)
@@ -315,14 +301,12 @@ class CodeGeneration():
         try:
             static_html_dir = Path(self.args.static_html_dir)
             static_html_dir.mkdir(parents=True, exist_ok=True)
-
             index_pattern = r"index.html:\n```html(.*)```\nend index.html"
             css_pattern = r"style.css:\n```css(.*)```\nend style.css"
             javascript_pattern = r"script.js:\n```javascript(.*)```\nend script.js"
             index_matches = re.findall(index_pattern, code, re.DOTALL)
             css_matches = re.findall(css_pattern, code, re.DOTALL)
             javascript_matches = re.findall(javascript_pattern, code, re.DOTALL)
-
             with open(osp.join(self.args.static_html_dir, 'index.html'), 'w') as f:
                 f.write(index_matches[0])
             with open(osp.join(self.args.static_html_dir, 'style.css'), 'w') as f:
@@ -357,6 +341,7 @@ class CodeGeneration():
 
     def Design_Modification(self, Generated_code, Code_Modification_String):
         loop_number = 0
+
         while True:
             loop_number += 1
             messages = []
