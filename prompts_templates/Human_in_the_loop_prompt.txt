@@ -1,3 +1,0 @@
-Example of Feature-to-Scenarios Natural Language:[
-{Replacement Flag}
-]

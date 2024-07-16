@@ -1,3 +1,0 @@
-{Replacement Flag}
-
-Please generate Gherkin language in one feature:

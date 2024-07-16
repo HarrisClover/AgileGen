@@ -1,6 +1,0 @@
-Instruction: Generate concise web system page templates for scenario description. And describe sitemaps.
-Scene description:[
-{Replacement Flag}
-]
-Note: Please use only 1 page to complete the task.
-Page templates:

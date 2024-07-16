@@ -1,6 +1,0 @@
-Gherkin: [
-{Gherkin Replacement Flag}
-]
-
-Instructions: Generate test cases based on Gherkin.
-
