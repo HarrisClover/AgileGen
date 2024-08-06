@@ -1,4 +1,8 @@
-# AgileGen
+<p align="center">
+<img src='./Icon.png' width=150>
+</p>
+
+# AgileGen 
 
 - A generative software development agent for human-computer collaboration initiated from the perspective of end-users.
 - Try the link: https://huggingface.co/spaces/HarrisClover/AgileGen
