@@ -1,6 +1,7 @@
 # AgileGen
 
 - A generative software development agent for human-computer collaboration initiated from the perspective of end-users.
+- Try the link: https://huggingface.co/spaces/HarrisClover/AgileGen
 
 # Overview 📄
 
@@ -28,3 +29,13 @@ https://github.com/HarrisClover/AgileGen/assets/33628813/8478c0d1-b511-4cae-8037
 1. Configure your OpenAI key and VPN in utils/CodeGeneration.py
 2. python ./main.py
 3. Running on local URL:  http://127.0.0.1:0000 (your VPN)
+
+# 🔎Citation
+```
+@article{zhang2024empowering,
+  title={Empowering Agile-Based Generative Software Development through Human-AI Teamwork},
+  author={Zhang, Sai and Xing, Zhenchang and Guo, Ronghui and Xu, Fangzhou and Chen, Lei and Zhang, Zhaoyuan and Zhang, Xiaowang and Feng, Zhiyong and Zhuang, Zhiqiang},
+  journal={arXiv preprint arXiv:2407.15568},
+  year={2024}
+}
+```
