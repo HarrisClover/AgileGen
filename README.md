@@ -39,7 +39,7 @@ https://github.com/HarrisClover/AgileGen/assets/33628813/8478c0d1-b511-4cae-8037
 3. Running on local URL:  http://127.0.0.1:0000 (your VPN)
 
 **Example input:**
-| Project Name                 | Description                                                |
+| Project Name                 | Description Features                                   |
 | ------------------------------- | ----------------------------------------------------------------- |
 | `NewsMeter`      | Evaluate the credibility of news articles by analyzing multiple factors and generating trustworthiness scores with explanations and evidence. |
 | `VideoClipper`   | VideoClipper is a software application that allows users to easily clip and trim videos. It provides an intuitive interface to select specific sections of the video, and saves the trimmed video as a new file.|
