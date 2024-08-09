@@ -29,7 +29,9 @@ The interaction and collaboration design of AgileGen is divided into two parts.
 https://github.com/HarrisClover/AgileGen/assets/33628813/8478c0d1-b511-4cae-8037-0c3f11f7074e
 
 ---
-
+# 👨‍💻‍Human-AI collaboration process:
+![inter_case_1](https://github.com/user-attachments/assets/6c2d46c4-0b41-4cd2-b53d-bb25c5daf2ff)
+---
 # ✈️Quick start
 
 1. Configure your OpenAI key and VPN in utils/CodeGeneration.py
