@@ -16,7 +16,7 @@ The interaction and collaboration design of AgileGen is divided into two parts.
 
 (1) End-user Decision-Making is used to collaborate with end-users to collect and clarify end-user decisions.
 
-(2) AgileGen Agent responds to user decisions by transforming and analyzing them, aiming to guide LLMs in generating software code consistent with user requirements. Scenarios Design and Rapid Prototype Design are two core components of the Agile Sapper.
+(2) AgileGen Agent responds to user decisions by transforming and analyzing them, aiming to guide LLMs in generating software code consistent with user requirements. Scenarios Design and Rapid Prototype Design are two core components of the AgileGen.
 
 - The Scenarios Design component is primarily used to design different scenarios represented in Gherkin language based on decision-making requirements, submit them to end-users for scenario decisions, and return the decided Gherkin scenarios.
 - The Rapid Prototype Design component is responsible for generating software application code based on the decided Gherkin scenarios. It then presents the software application to users for acceptance, receives user feedback and suggestions, and makes necessary modifications to the code.
