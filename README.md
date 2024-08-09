@@ -2,7 +2,7 @@
 # AgileGen: Empowering Agile-Based Generative Software Development through Human-AI Teamwork
 
 <p align="center">
-  <img src='./Icon.png' width=150>
+  <img src='./Icon.png' width=180>
 </p>
 
 - A generative software development agent for human-AI collaboration initiated from the perspective of end-users.
