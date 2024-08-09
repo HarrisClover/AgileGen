@@ -45,6 +45,9 @@ https://github.com/HarrisClover/AgileGen/assets/33628813/8478c0d1-b511-4cae-8037
 | `VideoClipper`   | VideoClipper is a software application that allows users to easily clip and trim videos. It provides an intuitive interface to select specific sections of the video, and saves the trimmed video as a new file.|
 | `SportArena`| Develop a user-friendly software application that allows users to create and customize virtual sports arenas.|
 |`SoundBoard`| I'd like to have a website that displays cards with words on them and plays sounds when clicked.|
+---
+![Step](https://github.com/user-attachments/assets/d14a0367-48f8-4ad2-90e7-53ac7af79572)
+
 
 # 🔎Citation
 ```
