@@ -1,7 +1,11 @@
 
-# AgileGen <img src='./Icon.png' width=50>
+# AgileGen: Empowering Agile-Based Generative Software Development through Human-AI Teamwork
 
-- A generative software development agent for human-computer collaboration initiated from the perspective of end-users.
+<p align="center">
+  <img src='./Icon.png' width=150>
+</p>
+
+- A generative software development agent for human-AI collaboration initiated from the perspective of end-users.
 - Try the link 🤗: https://huggingface.co/spaces/HarrisClover/AgileGen
 
 # Overview 📄
