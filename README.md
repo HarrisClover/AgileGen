@@ -7,7 +7,7 @@
 
 - A generative software development agent for human-AI collaboration initiated from the perspective of end-users.
 - Our preprint paper is avaliable at 📚: https://arxiv.org/abs/2407.15568
-- Try the link 🤗: https://huggingface.co/spaces/HarrisClover/AgileGen
+- Try the Huggingface Link 🤗: https://huggingface.co/spaces/HarrisClover/AgileGen
 # Overview 📄
 
 ![框架图_01](https://github.com/HarrisClover/AgileGen/assets/33628813/e41c642e-50bb-43a9-860c-9203aae0bc46)
