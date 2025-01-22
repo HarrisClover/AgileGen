@@ -60,7 +60,6 @@ address = {New York, NY, USA},
 issn = {1049-331X},
 url = {https://doi.org/10.1145/3702987},
 doi = {10.1145/3702987},
-note = {Just Accepted},
 journal = {ACM Trans. Softw. Eng. Methodol.},
 month = jan,
 keywords = {Agile, Human-AI Teamwork, Generative Software Development, User Requirement, Gherkin}
