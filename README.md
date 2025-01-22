@@ -52,9 +52,17 @@ https://github.com/HarrisClover/AgileGen/assets/33628813/8478c0d1-b511-4cae-8037
 # 🔎Citation
 ```
 @article{zhang2024empowering,
-  title={Empowering Agile-Based Generative Software Development through Human-AI Teamwork},
-  author={Zhang, Sai and Xing, Zhenchang and Guo, Ronghui and Xu, Fangzhou and Chen, Lei and Zhang, Zhaoyuan and Zhang, Xiaowang and Feng, Zhiyong and Zhuang, Zhiqiang},
-  journal={arXiv preprint arXiv:2407.15568},
-  year={2024}
+author = {Zhang, Sai and Xing, Zhenchang and Guo, Ronghui and Xu, Fangzhou and Chen, Lei and Zhang, Zhaoyuan and Zhang, Xiaowang and Feng, Zhiyong and Zhuang, Zhiqiang},
+title = {Empowering Agile-Based Generative Software Development through Human-AI Teamwork},
+year = {2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+issn = {1049-331X},
+url = {https://doi.org/10.1145/3702987},
+doi = {10.1145/3702987},
+note = {Just Accepted},
+journal = {ACM Trans. Softw. Eng. Methodol.},
+month = jan,
+keywords = {Agile, Human-AI Teamwork, Generative Software Development, User Requirement, Gherkin}
 }
 ```
